@@ -22,10 +22,8 @@ void	ft_brainfuck(char *str)
 	ptr = (char*)malloc(sizeof(ptr) * 2048);
 	while (str[i] != 0)
 	{
-		*ptr += str[i] == '+' ? 1 : 0;
-		*ptr -= str[i] == '-' ? 1 : 0;
-		ptr += str[i] == '>' ? 1 : 0;
-		ptr -= str[i] == '<' ? 1 : 0;
+		*ptr += (str[i] == '+') - (str[i] == '-');
+		ptr += (str[i] == '>') - (str[i] == '<');
 		if (str[i] == '[' && *ptr == 0)
 			while (str[i] != ']')
 				i++;
